@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght=400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
@@ -19,7 +19,7 @@
             --light-gray: #f5f5f5;
             --text-color: #333;
             --border-color: #ddd;
-            --green: #27ae60;
+            --green: #27ae60; 
         }
 
         * {
@@ -43,7 +43,7 @@
         header {
             background-color: var(--black);
             border-bottom: 2px solid var(--gold);
-            padding: 15px;
+            padding: 12px;
             text-align: center;
             position: sticky;
             top: 0;
@@ -51,25 +51,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .logo-circle {
-            width: 45px;
-            height: 45px;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--gold);
-            font-size: 1.1rem;
+        .logo-svg {
+            width: 52px;
+            height: 52px;
+            flex-shrink: 0;
         }
 
         header h1 {
             color: #fff;
             font-size: 1.3rem;
+        }
+
+        header h1 small {
+            display: block;
+            color: var(--gold);
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 3px;
         }
 
         main {
@@ -81,13 +82,8 @@
             margin-top: 10px;
         }
 
-        .screen {
-            display: none;
-        }
-
-        .screen.active {
-            display: block;
-        }
+        .screen { display: none; }
+        .screen.active { display: block; }
 
         h2 {
             margin-bottom: 15px;
@@ -103,9 +99,7 @@
             font-size: 1.05rem;
         }
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+        .form-group { margin-bottom: 15px; }
 
         label {
             display: block;
@@ -122,9 +116,12 @@
             border-radius: 8px;
             font-size: 1rem;
             outline: none;
+            transition: border-color 0.3s;
             background-color: #fff;
             color: #000;
         }
+
+        input:focus, select:focus, textarea:focus { border-color: var(--gold); }
 
         .btn {
             display: block;
@@ -136,6 +133,7 @@
             font-weight: bold;
             cursor: pointer;
             text-align: center;
+            transition: all 0.2s;
             margin-bottom: 10px;
         }
 
@@ -145,15 +143,15 @@
             border: 1px solid var(--gold);
         }
 
+        .btn-primary:active {
+            background-color: var(--gold);
+            color: var(--black);
+        }
+
         .btn-secondary {
             background-color: var(--light-gray);
             color: var(--black);
             border: 1px solid var(--border-color);
-        }
-
-        .btn-success {
-            background-color: var(--green);
-            color: white;
         }
 
         .btn-danger {
@@ -167,7 +165,39 @@
             border-radius: 10px;
             padding: 15px;
             margin-bottom: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             position: relative;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin: 0 0 5px 0;
+            color: var(--black);
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 3px;
+        }
+
+        .card .total-price {
+            font-weight: bold;
+            color: var(--black);
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        .branch-badge {
+            display: inline-block;
+            background: rgba(200, 169, 110, 0.15);
+            border: 1px solid var(--gold);
+            color: #8a6d3b;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-top: 4px;
         }
 
         .product-selector {
@@ -185,6 +215,7 @@
             font-weight: bold;
             cursor: pointer;
             background: #fafafa;
+            transition: all 0.2s;
         }
 
         .product-box.selected {
@@ -209,6 +240,7 @@
             display: block;
             width: 100%;
             height: 100%;
+            background: transparent;
         }
 
         .canvas-palette {
@@ -218,6 +250,7 @@
             background: #f9f9f9;
             padding: 10px;
             border-radius: 8px;
+            border: 1px solid var(--border-color);
             overflow-x: auto;
         }
 
@@ -230,12 +263,34 @@
             font-weight: bold;
             cursor: pointer;
             white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--black);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
         .palette-item.active-mode {
             background: var(--black);
             color: var(--gold);
             border-color: var(--gold);
+        }
+
+        .palette-item.active-mode.eraser-active {
+            background: #d9534f;
+            color: white;
+            border-color: #d9534f;
+        }
+
+        .canvas-controls-box {
+            background: #f1f3f5;
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            color: #495057;
+            margin-bottom: 12px;
+            text-align: center;
         }
 
         .curtain-item {
@@ -246,144 +301,171 @@
             background: #fdfdfd;
         }
 
-        /* حاوية المعاينة الذكية لتصوير الشاشة فوراً بالجوال */
-        .preview-scroll-container {
+        #invoice-customer, #invoice-internal {
+            display: none;
             width: 100%;
-            background: #fdfdfd;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            margin-bottom: 15px;
-            padding: 5px;
-        }
-
-        .invoice-print-container {
-            width: 100%; /* متجاوب تماماً مع الشاشة */
-            background: #ffffff !important;
-            color: #000000 !important;
-            padding: 10px;
-            box-sizing: border-box;
-            direction: rtl;
+            padding: 30px;
+            background: white;
+            color: black;
         }
 
         .invoice-header {
             text-align: center;
-            border-bottom: 2px dashed #C8A96E;
-            padding-bottom: 12px;
-            margin-bottom: 15px;
+            border-bottom: 3px double var(--gold);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .invoice-logo-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
         }
 
         .invoice-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
-            margin-bottom: 15px;
+            margin-top: 15px;
+            margin-bottom: 20px;
         }
 
         .invoice-table th, .invoice-table td {
-            border: 1px solid #000000 !important;
-            padding: 8px 5px;
+            border: 1px solid #ddd;
+            padding: 10px;
             text-align: right;
             font-size: 12px;
-            color: #000000 !important;
+            color: #000;
         }
 
-        .invoice-table th {
-            background-color: #f5f5f5 !important;
-            font-weight: bold;
+        .invoice-table th { background-color: #f5f5f5; }
+
+        .invoice-footer {
+            margin-top: 30px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+            font-size: 12px;
+        }
+        
+        .alert-info-wa {
+            background-color: #e6f7ff;
+            border: 1px solid #91d5ff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            color: #0050b3;
+            line-height: 1.4;
         }
 
         .internal-canvas-preview-box {
             width: 100%;
-            margin: 10px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+            margin: 15px 0 25px 0;
             text-align: center;
             background: #fff;
-            border: 1px solid #000;
-            padding: 3px;
+            border: 2px solid #000;
+            padding: 5px;
+            border-radius: 4px;
         }
 
         .internal-canvas-preview-box img {
-            width: 100%; /* ليناسب عرض الهاتف تماماً بدون خروج عن الحدود */
+            width: 100%;
             height: auto;
             display: block;
-            margin: 0 auto;
-        }
-
-        .workshop-spec-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 5px;
-            margin-bottom: 10px;
-        }
-        
-        .workshop-spec-table th, .workshop-spec-table td {
-            border: 1px solid #000000 !important;
-            padding: 8px 5px;
-            font-size: 12px;
-            text-align: right;
-            color: #000000 !important;
-        }
-        
-        .workshop-spec-table th {
-            background-color: #eaeaea !important;
-        }
-
-        .workshop-space-block {
-            border: 1px solid #000; 
-            padding: 8px; 
-            margin-bottom: 12px; 
-            background-color: #fff !important;
-        }
-
-        .internal-notes-block {
-            margin-top: 15px; 
-            background: #f9f9f9 !important; 
-            padding: 10px; 
-            border: 1px dashed #000 !important; 
-            font-size: 12px; 
-            color: #000000 !important;
         }
     </style>
 </head>
 <body>
 
+    <!-- تعريف اللوجو مرة واحدة لإعادة استخدامه -->
+    <svg width="0" height="0" style="position:absolute">
+        <defs>
+            <g id="salford-logo-shape">
+                <!-- الحلقة الذهبية المزدوجة -->
+                <circle cx="60" cy="60" r="57" fill="none" stroke="#C8A96E" stroke-width="2.5"/>
+                <circle cx="60" cy="60" r="51" fill="none" stroke="#C8A96E" stroke-width="1"/>
+                <!-- قوس المحراب -->
+                <path d="M36 88 L36 56 Q36 34 60 26 Q84 34 84 56 L84 88" fill="none" stroke="#C8A96E" stroke-width="3" stroke-linecap="round"/>
+                <!-- قاعدة القوس -->
+                <line x1="30" y1="88" x2="90" y2="88" stroke="#C8A96E" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- حرفا SF -->
+                <text x="60" y="72" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="bold" font-size="30" fill="#C8A96E" letter-spacing="1">SF</text>
+            </g>
+        </defs>
+    </svg>
+
     <header>
-        <div class="logo-circle">SF</div>
-        <h1>مخطط سالفورد</h1>
+        <svg class="logo-svg" viewBox="0 0 120 120"><use href="#salford-logo-shape"/></svg>
+        <h1>مخطط سالفورد<small>SALFORD FURNITURE</small></h1>
     </header>
 
     <main>
-        <!-- الشاشة الرئيسية -->
         <div id="screen-main" class="screen active">
             <h2>المشاريع الحالية</h2>
             <div id="projects-list"></div>
             <button class="btn btn-primary" onclick="navigate('screen-new-project')">+ مشروع جديد</button>
+            <button class="btn btn-secondary" onclick="openBranchesScreen()">⚙️ إدارة الفروع وأرقام الهواتف</button>
         </div>
 
-        <!-- شاشة إنشاء مشروع جديد -->
+        <!-- شاشة إدارة الفروع -->
+        <div id="screen-branches" class="screen">
+            <h2>فروع سالفورد</h2>
+            <p style="font-size:0.85rem; color:#666; margin-bottom:15px;">كل فاتورة تحمل اسم ورقم الفرع الذي تختاره في المشروع. أضف فروعك هنا مرة واحدة.</p>
+            <div id="branches-list"></div>
+            
+            <h3>+ إضافة فرع جديد</h3>
+            <div class="form-group">
+                <label>اسم الفرع / المنطقة</label>
+                <input type="text" id="branch-name" placeholder="مثال: فرع الري">
+            </div>
+            <div class="form-group">
+                <label>رقم الهاتف</label>
+                <input type="tel" id="branch-phone" placeholder="مثال: 55943343">
+            </div>
+            <div class="form-group">
+                <label>العنوان التفصيلي (يظهر في الفاتورة)</label>
+                <input type="text" id="branch-address" placeholder="مثال: الري | مجمع الأفنيوز">
+            </div>
+            <button class="btn btn-primary" onclick="addBranch()">حفظ الفرع</button>
+            <button class="btn btn-secondary" onclick="navigate('screen-main')">رجوع للرئيسية</button>
+        </div>
+
         <div id="screen-new-project" class="screen">
             <h2>إنشاء مشروع جديد</h2>
+            <div class="form-group">
+                <label>الفرع المسؤول عن الطلب <span style="color:red">*</span></label>
+                <select id="new-proj-branch"></select>
+            </div>
             <div class="form-group">
                 <label>اسم الزبون <span style="color:red">*</span></label>
                 <input type="text" id="cust-name" placeholder="أدخل اسم الزبون الكامل">
             </div>
             <div class="form-group">
-                <label>رقم الهاتف (العناوين والورشة)</label>
+                <label>رقم الهاتف (اختياري)</label>
                 <input type="tel" id="cust-phone" placeholder="965xxxxxxx">
             </div>
             <div class="form-group">
-                <label>العنوان بالكامل</label>
+                <label>العنوان (اختياري)</label>
                 <input type="text" id="cust-address" placeholder="المنطقة، القطعة، الجادة...">
             </div>
             <button class="btn btn-primary" onclick="saveNewProject()">بدء المشروع</button>
             <button class="btn btn-secondary" onclick="navigate('screen-main')">إلغاء</button>
         </div>
 
-        <!-- شاشة تفاصيل المشروع الرئيسي -->
         <div id="screen-project-details" class="screen">
             <h2 id="view-project-title">تفاصيل المشروع</h2>
             <div id="project-info-summary" style="margin-bottom: 15px; font-size: 0.9rem; color: #555;"></div>
             
-            <h3>المساحات المضافة للطلب</h3>
+            <div class="form-group">
+                <label>فرع الفاتورة (يمكن تغييره في أي وقت):</label>
+                <select id="proj-branch-select" onchange="changeProjectBranch(this.value)"></select>
+            </div>
+
+            <h3>المساحات المضافة</h3>
             <div id="spaces-list" style="margin: 10px 0;"></div>
 
             <button class="btn btn-primary" onclick="openNewSpace()">+ إضافة مساحة (غرفة/ديوانية)</button>
@@ -392,28 +474,30 @@
             
             <h2>موعد التسليم والملاحظات</h2>
             <div class="form-group">
-                <label>موعد التسليم النهائي للورشة والزبون</label>
-                <input type="text" id="proj-delivery" placeholder="مثال: بعد 7 أيام - تاريخ 15 / 7">
+                <label>موعد التسليم (داخلي فقط)</label>
+                <input type="text" id="proj-delivery" placeholder="مثال: بعد أسبوعين">
             </div>
             <div class="form-group">
-                <label>ملاحظات عامة فنية وشروط</label>
-                <textarea id="proj-notes" rows="3" placeholder="ملاحظات أو شروط خاصة تظهر بالفاتورة..."></textarea>
+                <label>ملاحظات عامة (تظهر في الفاتورتين)</label>
+                <textarea id="proj-notes" rows="3" placeholder="ملاحظات أو شروط خاصة..."></textarea>
             </div>
 
-            <h3 style="color:var(--gold); border-bottom:1px solid #ccc; padding-bottom:5px;">مرحلة إنهاء الطلب والمعاينة:</h3>
-            <button class="btn btn-success" onclick="prepareAndGoToExport('customer')">👁️ فتح معاينة فاتورة الزبون للتصوير</button>
-            <button class="btn btn-success" onclick="prepareAndGoToExport('internal')">👁️ فتح معاينة الورشة الفنية للتصوير</button>
+            <button class="btn btn-primary" onclick="exportPDF('customer')">تحميل فاتورة الزبون PDF</button>
+            <button class="btn btn-primary" onclick="exportPDF('internal')">تحميل نسختي الداخلية PDF</button>
             
-            <button class="btn btn-secondary" style="background:#25D366; color:white; border:none; margin-top:10px;" onclick="shareWhatsApp('customer')">إرسال ملخص سريع واتساب للزبون</button>
-            <button class="btn btn-secondary" style="background:#075E54; color:white; border:none;" onclick="shareWhatsApp('store')">إرسال الملخص لإدارة سالفورد</button>
+            <div class="alert-info-wa">
+                💡 روابط واتساب لا تدعم إرفاق ملف الـ PDF تلقائياً، يرجى تحميل الفاتورة للجهاز أولاً ثم إرفاقها يدوياً للمحادثة.
+            </div>
+            <button class="btn btn-secondary" style="background:#25D366; color:white; border:none;" onclick="shareWhatsApp('customer')">إرسال الملخص للزبون عبر واتساب</button>
+            <button class="btn btn-secondary" style="background:#075E54; color:white; border:none;" onclick="shareWhatsApp('store')">إرسال النسخة لإدارة سالفورد</button>
             
             <button class="btn btn-danger" style="margin-top: 25px;" onclick="deleteCurrentProject()">حذف هذا المشروع بالكامل</button>
             <button class="btn btn-secondary" onclick="navigate('screen-main')">رجوع للرئيسية</button>
         </div>
 
-        <!-- شاشة تحديد منتجات المساحة -->
         <div id="screen-new-space" class="screen">
             <h2>إضافة مساحة جديدة</h2>
+            
             <label>1) اختر المنتجات المطلوبة في هذه المساحة:</label>
             <div class="product-selector">
                 <div class="product-box" id="p-box-carpet" onclick="toggleProductSelection('carpet')">سجاد</div>
@@ -440,27 +524,30 @@
             <button class="btn btn-secondary" onclick="closeSpaceScreen()">إلغاء</button>
         </div>
 
-        <!-- شاشة تفاصيل المقاسات والخامات واللوحة اليدوية -->
         <div id="screen-space-details" class="screen">
             <h2 id="space-details-title">تفاصيل المنتجات والمقاسات</h2>
 
-            <!-- لوحة التخطيط والهندسة -->
             <div id="section-drawing-tool" style="display:none;">
-                <label style="color:var(--gold); font-weight:bold; margin-bottom:5px;">لوحة التخطيط (ارسم بيدك ثم أضف المقاسات):</label>
+                <label style="color:var(--gold); font-weight:bold; margin-bottom:5px;">لوحة التخطيط (ارسم بيدك ثم اسحب المقاسات):</label>
+                
                 <div class="canvas-palette">
-                    <div class="palette-item active-mode" id="btn-draw-mode" onclick="setCanvasMode('draw')">✏️ رسم حر</div>
-                    <div class="palette-item" id="btn-eraser-mode" onclick="setCanvasMode('erase')">🧽 ممحاة</div>
-                    <div class="palette-item" id="btn-select-mode" onclick="setCanvasMode('select')">🖐️ تحريك</div>
-                    <div class="palette-item" onclick="addSizeLabelBox()">📏 إضافة مقاس</div>
+                    <div class="palette-item active-mode" id="btn-draw-mode" onclick="setCanvasMode('draw')">✏️ رسم جدار</div>
+                    <div class="palette-item" id="btn-eraser-mode" onclick="setCanvasMode('erase')">🧽 ممحاة دقيقة (فتح أبواب)</div>
+                    <div class="palette-item" id="btn-select-mode" onclick="setCanvasMode('select')">🖐️ تحريك المقاس</div>
+                    <div class="palette-item" onclick="addSizeLabelBox()">📏 إضافة مقاس (أخضر)</div>
                 </div>
 
                 <div class="canvas-container" id="canvas-wrapper">
                     <canvas id="drawing-canvas"></canvas>
                 </div>
+
+                <div class="canvas-controls-box" id="canvas-hint">
+                    ✏️ الوضع الحالي: ارسم جدران ومخطط الديوانية بيدك مباشرة على اللوحة!
+                </div>
                 
                 <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                    <button class="btn btn-secondary" style="padding: 6px; font-size:11px; margin-bottom:0;" onclick="clearFreeDrawLines()">🗑️ مسح التخطيط</button>
-                    <button class="btn btn-secondary" style="padding: 6px; font-size:11px; margin-bottom:0;" onclick="deleteSelectedLabelElement()">❌ حذف مربع القياس</button>
+                    <button class="btn btn-secondary" style="padding: 6px; font-size:11px; margin-bottom:0;" onclick="clearFreeDrawLines()">🗑️ مسح التخطيط بالكامل</button>
+                    <button class="btn btn-secondary" style="padding: 6px; font-size:11px; margin-bottom:0;" onclick="deleteSelectedLabelElement()">❌ حذف مربع القياس المحدد</button>
                 </div>
             </div>
 
@@ -469,30 +556,156 @@
             <button class="btn btn-primary" onclick="saveSpaceToProject()">حفظ المساحة في الطلب</button>
             <button class="btn btn-secondary" onclick="navigate('screen-new-space')">تعديل الاختيارات</button>
         </div>
-
-        <!-- شاشة المعاينة الذكية المصممة والمضبوطة خصيصاً لتصوير الشاشة -->
-        <div id="screen-export-preview" class="screen">
-            <h2>جاهز لتصوير الشاشة 📸</h2>
-            <p style="font-size:0.85rem; color:#666; margin-bottom:12px;">المعاينة الآن مضبوطة تماماً بعرض هاتفك لتتمكن من أخذ لقطة شاشة نظيفة ومكتملة:</p>
-            
-            <div class="preview-scroll-container">
-                <!-- الفاتورة متطابقة تماماً ومتجاوبة مع عرض هاتفك بدون أي نقص -->
-                <div id="invoice-render-zone"></div>
-            </div>
-
-            <!-- تم الإبقاء على ميزة الـ PDF إن رغبت بها لاحقاً، لكن التركيز الأساسي الآن على تصوير الشاشة -->
-            <button class="btn btn-success" style="display:none;" id="btn-trigger-actual-download">تحميل ملف PDF</button>
-            
-            <button class="btn btn-primary" style="background:#0D0D0D; color:#fff;" onclick="closeExportPreviewScreen()">🔙 رجوع للمشروع وتعديل البيانات</button>
-        </div>
     </main>
+
+    <div id="invoice-customer">
+        <div class="invoice-header">
+            <div class="invoice-logo-row">
+                <svg width="75" height="75" viewBox="0 0 120 120"><use href="#salford-logo-shape"/></svg>
+                <div style="text-align:right;">
+                    <h2 style="color: #000; font-size: 24px; margin-bottom: 2px;">سالفورد للأثاث والمفروشات</h2>
+                    <p style="font-size:11px; color:#C8A96E; letter-spacing:2px; font-weight:bold;">SALFORD FURNITURE</p>
+                </div>
+            </div>
+            <p style="font-size: 14px; color: #555;" id="inv-cust-branch-line"></p>
+            <br>
+            <table style="width:100%; border:none; text-align:right; font-size:13px; line-height:1.8;">
+                <tr><td><strong>رقم الفاتورة المرجعي:</strong> <span id="inv-cust-id"></span></td></tr>
+                <tr><td><strong>التاريخ:</strong> <span id="inv-cust-date"></span></td></tr>
+                <tr><td><strong>السيد / السيدة:</strong> <span id="inv-cust-name"></span></td></tr>
+            </table>
+        </div>
+        <table class="invoice-table" id="inv-cust-table">
+            <thead>
+                <tr>
+                    <th style="width: 30%;">المساحة</th>
+                    <th style="width: 50%;">المنتج والوصف العام</th>
+                    <th style="width: 20%;">السعر الإجمالي</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <h3 style="text-align: left; margin-bottom: 20px; font-size: 18px; color:#000;">الإجمالي الكلي: <span id="inv-cust-total"></span> د.ك</h3>
+        <div id="inv-cust-notes-area" style="margin-top:20px; font-size:13px; border-top:2px solid #ccc; padding-top:10px; line-height:1.5;"></div>
+        <div class="invoice-footer">
+            <p style="font-size: 14px; font-weight: bold;">نشكركم على ثقتكم الغالية باختيار سالفورد للأثاث والمفروشات.</p>
+            <p style="font-size: 12px; color:#555; margin-top:5px;" id="inv-cust-footer-phone"></p>
+        </div>
+    </div>
+
+    <!-- نسخة الإدارة والورشة الفنية -->
+    <div id="invoice-internal">
+        <div class="invoice-header" style="border-bottom-color: #000; padding-bottom: 8px; margin-bottom: 10px;">
+            <div class="invoice-logo-row">
+                <svg width="55" height="55" viewBox="0 0 120 120"><use href="#salford-logo-shape"/></svg>
+                <h2 style="font-size: 20px; color: #000;">نسخة الإدارة الفنية والورشة (تفصيلية كاملة)</h2>
+            </div>
+        </div>
+        <div style="font-size: 13px; margin-bottom: 15px; line-height: 1.6; border-bottom: 1px solid #ccc; padding-bottom:10px; display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+            <div><p><strong>اسم الزبون الكامل:</strong> <span id="inv-int-name"></span></p></div>
+            <div><p><strong>رقم هاتف الاتصال:</strong> <span id="inv-int-phone"></span></p></div>
+            <div><p><strong>العنوان:</strong> <span id="inv-int-address"></span></p></div>
+            <div><p><strong>تاريخ الإنشاء:</strong> <span id="inv-int-date"></span></p></div>
+            <div><p><strong>الفرع المسؤول:</strong> <span id="inv-int-branch"></span></p></div>
+            <div><p><strong>هاتف الفرع:</strong> <span id="inv-int-branch-phone"></span></p></div>
+            <div style="grid-column: span 2; color: #d9534f; font-weight: bold; font-size: 14px; margin-top:3px;"><p><strong>موعد التسليم المتفق عليه:</strong> <span id="inv-int-delivery"></span></p></div>
+        </div>
+        
+        <div id="inv-int-top-canvas-area"></div>
+        
+        <div id="inv-int-spaces-details"></div>
+
+        <h3 style="text-align: left; margin-top: 25px; border-top: 3px double #000; padding-top: 10px; font-size: 18px; color: #000;">الإجمالي الكلي المستحق للطلب: <span id="inv-int-total"></span> د.ك</h3>
+        <div id="inv-int-notes-area" style="margin-top:20px; background: #f5f5f5; padding: 12px; border:1px solid #999; font-size:13px; line-height:1.5;"></div>
+    </div>
 
     <script>
         let projects = JSON.parse(localStorage.getItem('salford_projects')) || [];
         let currentProjectId = null;
         let selectedProducts = { carpet: false, musnad: false, curtain: false, sofa: false };
-        let currentExportTarget = 'customer'; 
-        
+
+        // ===== نظام الفروع =====
+        let branches = JSON.parse(localStorage.getItem('salford_branches')) || [
+            { name: 'الضجيج', phone: '55943343', address: 'الضجيج | مجمع علي عبدالوهاب' }
+        ];
+
+        function saveBranches() {
+            localStorage.setItem('salford_branches', JSON.stringify(branches));
+        }
+
+        function openBranchesScreen() {
+            renderBranchesList();
+            navigate('screen-branches');
+        }
+
+        function renderBranchesList() {
+            const listDiv = document.getElementById('branches-list');
+            listDiv.innerHTML = '';
+            branches.forEach((b, i) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h3>📍 ${b.name}</h3>
+                    <p>📞 ${b.phone}</p>
+                    <p>🏠 ${b.address || '-'}</p>
+                    ${branches.length > 1 ? `<button class="btn btn-danger" style="padding:4px 8px; font-size:11px; width:auto; position:absolute; left:10px; top:10px;" onclick="deleteBranch(${i})">حذف</button>` : ''}
+                `;
+                listDiv.appendChild(card);
+            });
+        }
+
+        function addBranch() {
+            const name = document.getElementById('branch-name').value.trim();
+            const phone = document.getElementById('branch-phone').value.trim();
+            const address = document.getElementById('branch-address').value.trim();
+            if(!name || !phone) {
+                alert('اسم الفرع ورقم الهاتف حقلان إلزاميان!');
+                return;
+            }
+            branches.push({ name, phone, address });
+            saveBranches();
+            document.getElementById('branch-name').value = '';
+            document.getElementById('branch-phone').value = '';
+            document.getElementById('branch-address').value = '';
+            renderBranchesList();
+        }
+
+        function deleteBranch(index) {
+            if(branches.length <= 1) { alert('يجب أن يبقى فرع واحد على الأقل.'); return; }
+            if(confirm(`حذف فرع ${branches[index].name}؟ المشاريع القديمة ستحتفظ ببيانات فرعها المحفوظة.`)) {
+                branches.splice(index, 1);
+                saveBranches();
+                renderBranchesList();
+            }
+        }
+
+        function fillBranchSelect(selectId, selectedName) {
+            const sel = document.getElementById(selectId);
+            sel.innerHTML = '';
+            branches.forEach((b, i) => {
+                const opt = document.createElement('option');
+                opt.value = i;
+                opt.innerText = `${b.name} — ${b.phone}`;
+                if(selectedName && b.name === selectedName) opt.selected = true;
+                sel.appendChild(opt);
+            });
+        }
+
+        function changeProjectBranch(branchIndex) {
+            const proj = projects.find(p => p.id === currentProjectId);
+            const b = branches[branchIndex];
+            if(!proj || !b) return;
+            proj.branch = { name: b.name, phone: b.phone, address: b.address };
+            saveToStorage();
+            document.getElementById('project-info-summary').innerHTML = buildProjectSummary(proj);
+        }
+
+        function getProjectBranch(proj) {
+            // المشاريع القديمة بدون فرع تأخذ الفرع الأول تلقائياً
+            return proj.branch || branches[0];
+        }
+
+        // ===== التنقل والمشاريع =====
         let canvas, ctx;
         let canvasMode = 'draw'; 
         let freeDrawLines = []; 
@@ -500,26 +713,21 @@
         let sizeLabels = []; 
         let selectedLabel = null;
         let isDraggingLabel = false;
+        let isResizingLabel = false;
         let dragOffset = { x: 0, y: 0 };
+        let activeHandle = null;
 
         function navigate(screenId) {
-            document.querySelectorAll('.screen').forEach(s => {
-                s.classList.remove('active');
-                s.style.display = 'none'; 
-            });
-            const targetScreen = document.getElementById(screenId);
-            if (targetScreen) {
-                targetScreen.classList.add('active');
-                targetScreen.style.display = 'block'; 
-            }
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
             window.scrollTo(0, 0);
             if(screenId === 'screen-main') renderProjectsList();
+            if(screenId === 'screen-new-project') fillBranchSelect('new-proj-branch');
         }
 
         window.onload = function() {
             renderProjectsList();
             initCanvas();
-            document.getElementById('btn-trigger-actual-download').onclick = executePDFDownload;
         };
 
         function saveToStorage() {
@@ -536,6 +744,7 @@
             projects.forEach(proj => {
                 let total = 0;
                 proj.spaces.forEach(s => total += Number(s.totalPrice || 0));
+                const b = getProjectBranch(proj);
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.onclick = () => openProject(proj.id);
@@ -543,7 +752,8 @@
                     <h3>${proj.name}</h3>
                     <p>التاريخ: ${proj.date}</p>
                     <p>عدد المساحات: ${proj.spaces.length}</p>
-                    <div style="font-weight:bold; color:var(--black); margin-top:5px;">الإجمالي: ${total} د.ك</div>
+                    <div class="total-price">الإجمالي: ${total} د.ك</div>
+                    <span class="branch-badge">📍 فرع ${b.name}</span>
                 `;
                 listDiv.appendChild(card);
             });
@@ -551,12 +761,18 @@
 
         function saveNewProject() {
             const name = document.getElementById('cust-name').value.trim();
-            if(!name) { alert('اسم الزبون حقل إلزامي!'); return; }
+            if(!name) {
+                alert('اسم الزبون حقل إلزامي!');
+                return;
+            }
+            const branchIdx = document.getElementById('new-proj-branch').value;
+            const b = branches[branchIdx] || branches[0];
             const newProj = {
                 id: 'SF-' + Math.floor(1000 + Math.random() * 9000),
                 name: name,
                 phone: document.getElementById('cust-phone').value.trim(),
                 address: document.getElementById('cust-address').value.trim(),
+                branch: { name: b.name, phone: b.phone, address: b.address },
                 date: new Date().toLocaleDateString('ar-KW'),
                 delivery: '',
                 notes: '',
@@ -570,11 +786,17 @@
             openProject(newProj.id);
         }
 
+        function buildProjectSummary(proj) {
+            const b = getProjectBranch(proj);
+            return `📱 هاتف: ${proj.phone || '-'} | 🏠 العنوان: ${proj.address || '-'}<br>📍 <strong>فرع الفاتورة: ${b.name} (${b.phone})</strong>`;
+        }
+
         function openProject(id) {
             currentProjectId = id;
             const proj = projects.find(p => p.id === id);
             document.getElementById('view-project-title').innerText = `مشروع الزبون: ${proj.name}`;
-            document.getElementById('project-info-summary').innerHTML = `📱 هاتف: ${proj.phone || '-'} | 🏠 العنوان: ${proj.address || '-'}`;
+            document.getElementById('project-info-summary').innerHTML = buildProjectSummary(proj);
+            fillBranchSelect('proj-branch-select', getProjectBranch(proj).name);
             document.getElementById('proj-delivery').value = proj.delivery || '';
             document.getElementById('proj-notes').value = proj.notes || '';
             document.getElementById('proj-delivery').oninput = (e) => { proj.delivery = e.target.value; saveToStorage(); };
@@ -594,16 +816,16 @@
                 const item = document.createElement('div');
                 item.className = 'card';
                 item.innerHTML = `
-                    <strong>${space.type} - ${space.customName || 'عامة'}</strong>
-                    <p>المنتجات: ${Object.keys(space.products).map(translateHtmlKey).join('، ')}</p>
+                    <strong>${space.type} - ${space.customName || 'بدون اسم'}</strong>
+                    <p>المنتجات: ${Object.keys(space.products).map(translateProdKey).join('، ')}</p>
                     <div style="color:var(--gold); font-weight:bold;">السعر: ${space.totalPrice} د.ك</div>
-                    <button class="btn btn-danger" style="padding:4px 8px; font-size:11px; width:auto; position:absolute; left:10px; top:10px;" onclick="deleteSpace(${index}); event.stopPropagation();">حذف</button>
+                    <button class="btn btn-danger" style="padding:4px 8px; font-size:11px; width:auto; position:absolute; left:10px; top:10px;" onclick="deleteSpace(${index}); event.stopPropagation();">حذف المساحة</button>
                 `;
                 container.appendChild(item);
             });
         }
 
-        function translateHtmlKey(key) {
+        function translateProdKey(key) {
             const trans = { carpet: 'سجاد', musnad: 'مساند', curtain: 'ستائر', sofa: 'كنب' };
             return trans[key] || key;
         }
@@ -618,7 +840,7 @@
         }
 
         function deleteCurrentProject() {
-            if(confirm('هل أنت متأكد من مسح المشروع نهائياً؟')) {
+            if(confirm('تحذير: هل أنت متأكد من مسح هذا المشروع نهائياً؟')) {
                 projects = projects.filter(p => p.id !== currentProjectId);
                 saveToStorage();
                 navigate('screen-main');
@@ -639,7 +861,10 @@
 
         function proceedToSpaceDetails() {
             const hasSelection = Object.values(selectedProducts).some(v => v);
-            if(!hasSelection) { alert('الرجاء تحديد منتج واحد على الأقل!'); return; }
+            if(!hasSelection) {
+                alert('الرجاء تحديد منتج واحد على الأقل!');
+                return;
+            }
             if(selectedProducts.musnad) {
                 document.getElementById('section-drawing-tool').style.display = 'block';
                 setTimeout(resetDrawingCanvas, 50);
@@ -663,22 +888,24 @@
                             <div class="form-group"><label>العرض (م)</label><input type="number" step="0.01" id="c-width" oninput="calcCarpetArea()"></div>
                         </div>
                         <p id="c-area-display" style="font-weight:bold; color:#8e44ad; margin-bottom:10px;">المساحة: 0 م²</p>
-                        <div class="form-group"><label>مسطرة السجاد</label><input type="text" id="c-pattern" placeholder="اسم موديل أو مسطرة السجاد"></div>
-                        <div class="form-group"><label>رقم اللون</label><input type="text" id="c-color" placeholder="رقم أو رمز اللون بدقة"></div>
+                        <div class="form-group"><label>اسم المسطرة</label><input type="text" id="c-pattern"></div>
+                        <div class="form-group"><label>رقم اللون</label><input type="text" id="c-color"></div>
                         <div class="form-group"><label>السعر (د.ك)</label><input type="number" id="c-price" value="0"></div>
                     </div>
                 `;
             }
+
             if(selectedProducts.musnad) {
                 container.innerHTML += `
                     <div class="card" style="border-right: 4px solid var(--gold);">
                         <h4>📦 تفاصيل المساند</h4>
-                        <div class="form-group"><label>مواصفات / مسطرة الخام</label><input type="text" id="m-pattern" placeholder="مسطرة القماش المعتمدة للظهر والمخدات"></div>
-                        <div class="form-group"><label>رقم اللون</label><input type="text" id="m-color" placeholder="رقم لون قماش المساند"></div>
+                        <div class="form-group"><label>مسطرة الخام</label><input type="text" id="m-pattern"></div>
+                        <div class="form-group"><label>رقم اللون</label><input type="text" id="m-color"></div>
                         <div class="form-group"><label>السعر (د.ك)</label><input type="number" id="m-price" value="0"></div>
                     </div>
                 `;
             }
+
             if(selectedProducts.curtain) {
                 container.innerHTML += `
                     <div class="card" style="border-right: 4px solid #27ae60;">
@@ -689,11 +916,12 @@
                 `;
                 addCurtainItemField();
             }
+
             if(selectedProducts.sofa) {
                 container.innerHTML += `
                     <div class="card" style="border-right: 4px solid #e67e22;">
                         <h4>📦 تفاصيل الكنب</h4>
-                        <div class="form-group"><label>الوصف والنوع والقياس</label><input type="text" id="s-desc" placeholder="مثال: كنب مودرن، مسطرة رقم 5"></div>
+                        <div class="form-group"><label>الوصف</label><input type="text" id="s-desc" placeholder="كنب زاوية 6 مقاعد"></div>
                         <div class="form-group"><label>السعر (د.ك)</label><input type="number" id="s-price" value="0"></div>
                     </div>
                 `;
@@ -718,7 +946,10 @@
                     <span>ستارة #${curtainCounter}</span>
                     <span style="color:red; cursor:pointer;" onclick="document.getElementById('curtain-id-${curtainCounter}').remove()">حذف 🗑️</span>
                 </div>
-                <div class="form-group"><label>نوع الستارة والمسطرة</label><input type="text" class="curt-type" placeholder="نوع الخام والمسطرة"></div>
+                <div class="form-group">
+                    <label>النوع</label>
+                    <select class="curt-type"><option value="خام">خام</option><option value="رول">رول</option></select>
+                </div>
                 <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:5px;">
                     <div class="form-group"><label>العرض (م)</label><input type="number" step="0.01" class="curt-w"></div>
                     <div class="form-group"><label>الارتفاع (م)</label><input type="number" step="0.01" class="curt-h"></div>
@@ -730,11 +961,12 @@
 
         function initCanvas() {
             canvas = document.getElementById('drawing-canvas');
-            if(!canvas) return;
             ctx = canvas.getContext('2d');
+            
             canvas.addEventListener('mousedown', startInteract);
             canvas.addEventListener('mousemove', moveInteract);
             canvas.addEventListener('mouseup', endInteract);
+
             canvas.addEventListener('touchstart', (e) => { startInteract(e.touches[0]); e.preventDefault(); }, {passive: false});
             canvas.addEventListener('touchmove', (e) => { moveInteract(e.touches[0]); e.preventDefault(); }, {passive: false});
             canvas.addEventListener('touchend', (e) => { endInteract(e); e.preventDefault(); }, {passive: false});
@@ -744,32 +976,63 @@
             const wrapper = document.getElementById('canvas-wrapper');
             canvas.width = wrapper.clientWidth;
             canvas.height = 320;
-            freeDrawLines = []; sizeLabels = []; selectedLabel = null;
-            setCanvasMode('draw'); redrawCanvas();
+            
+            freeDrawLines = [];
+            sizeLabels = [];
+            selectedLabel = null;
+            setCanvasMode('draw');
+            redrawCanvas();
         }
 
         function setCanvasMode(mode) {
             canvasMode = mode;
             document.getElementById('btn-draw-mode').className = 'palette-item' + (mode === 'draw' ? ' active-mode' : '');
-            document.getElementById('btn-eraser-mode').className = 'palette-item' + (mode === 'erase' ? ' active-mode' : '');
+            document.getElementById('btn-eraser-mode').className = 'palette-item' + (mode === 'erase' ? ' active-mode eraser-active' : '');
             document.getElementById('btn-select-mode').className = 'palette-item' + (mode === 'select' ? ' active-mode' : '');
+            
+            const hint = document.getElementById('canvas-hint');
+            if(mode === 'draw') {
+                hint.innerHTML = '✏️ وضع الرسم نشط: ارسم الجدران والتخطيطات بإصبعك مباشرة.';
+            } else if(mode === 'erase') {
+                hint.innerHTML = '🧽 الممحاة الدقيقة نشطة: مرر فوق الأماكن المراد مسحها لفتح الأبواب أو النوافذ بدقة.';
+            } else {
+                hint.innerHTML = '🖐️ وضع التحريك نشط: اضغط على أي مربع مقاس أخضر لسحبه وإفلاته في مكانه المناسب.';
+            }
         }
 
         function addSizeLabelBox() {
-            let num = prompt("أدخل قيمة المقاس (مثال: 5.6 أو 7):", "");
+            let num = prompt("أدخل قيمة المقاس (مثال: 5.40م):", "0.00م");
             if(!num) return;
-            let item = { id: 'lbl-' + Date.now(), text: num, x: canvas.width / 2 - 35, y: 50, w: 70, h: 26 };
-            sizeLabels.push(item); selectedLabel = item; setCanvasMode('select'); redrawCanvas();
+            
+            // إنشاء مربع مقاس بحجم ثابت ومناسب للنص
+            let item = {
+                id: 'lbl-' + Date.now(),
+                text: num,
+                x: canvas.width / 2 - 40,
+                y: 40, 
+                w: 80,  // عرض المربع
+                h: 30   // ارتفاع المربع لضمان ظهور النص
+            };
+            sizeLabels.push(item);
+            selectedLabel = item;
+            setCanvasMode('select'); 
+            redrawCanvas();
         }
 
         function deleteSelectedLabelElement() {
-            if(!selectedLabel) return;
+            if(!selectedLabel) { alert("يرجى تحديد مربع مقاس أولاً بالضغط عليه في وضع التحريك."); return; }
             sizeLabels = sizeLabels.filter(el => el.id !== selectedLabel.id);
-            selectedLabel = null; redrawCanvas();
+            selectedLabel = null;
+            redrawCanvas();
         }
 
         function clearFreeDrawLines() {
-            if(confirm("مسح التخطيط؟")) { freeDrawLines = []; sizeLabels = []; selectedLabel = null; redrawCanvas(); }
+            if(confirm("هل تريد مسح تخطيط الرسم اليدوي بالكامل؟")) {
+                freeDrawLines = [];
+                sizeLabels = [];
+                selectedLabel = null;
+                redrawCanvas();
+            }
         }
 
         function getCanvasCoords(e) {
@@ -777,301 +1040,437 @@
             return { x: e.clientX - rect.left, y: e.clientY - rect.top };
         }
 
-        function startInteract(e) {
-            const pt = getCanvasCoords(e);
-            if (canvasMode === 'draw') { currentLine = [pt]; freeDrawLines.push(currentLine); } 
-            else if (canvasMode === 'erase') { handleEraserAction(pt); }
-            else if (canvasMode === 'select') {
-                for (let i = sizeLabels.length - 1; i >= 0; i--) {
-                    let el = sizeLabels[i];
-                    if (pt.x >= el.x && pt.x <= el.x + el.w && pt.y >= el.y && pt.y <= el.h + el.y) {
-                        selectedLabel = el; isDraggingLabel = true;
-                        dragOffset.x = pt.x - el.x; dragOffset.y = pt.y - el.y;
-                        redrawCanvas(); return;
+        function pointToLineDistance(p, p1, p2) {
+            let A = p.x - p1.x; let B = p.y - p1.y; let C = p2.x - p1.x; let D = p2.y - p1.y;
+            let dot = A * C + B * D; let len_sq = C * C + D * D;
+            let param = -1;
+            if (len_sq != 0) param = dot / len_sq;
+            let xx, yy;
+            if (param < 0) { xx = p1.x; yy = p1.y; }
+            else if (param > 1) { xx = p2.x; yy = p2.y; }
+            else { xx = p1.x + param * C; yy = p1.y + param * D; }
+            let dx = p.x - xx; let dy = p.y - yy;
+            return Math.sqrt(dx * dx + dy * dy);
+        }
+
+        // الممحاة النقطية المعتمدة على تقطيع الخطوط لعمل فتحات الأبواب
+        function handlePreciseEraserAction(pt) {
+            let eraseRadius = 14; 
+            let newFreeDrawLines = [];
+
+            freeDrawLines.forEach(line => {
+                let currentSubLine = [];
+                for (let i = 0; i < line.length; i++) {
+                    let p = line[i];
+                    let dist = Math.sqrt((p.x - pt.x)**2 + (p.y - pt.y)**2);
+                    
+                    if (dist > eraseRadius) {
+                        currentSubLine.push(p);
+                    } else {
+                        if (currentSubLine.length > 0) {
+                            newFreeDrawLines.push(currentSubLine);
+                            currentSubLine = [];
+                        }
                     }
                 }
-                selectedLabel = null; redrawCanvas();
+                if (currentSubLine.length > 0) {
+                    newFreeDrawLines.push(currentSubLine);
+                }
+            });
+
+            freeDrawLines = newFreeDrawLines;
+            redrawCanvas();
+        }
+
+        function startInteract(e) {
+            const pt = getCanvasCoords(e);
+            
+            if (canvasMode === 'draw') {
+                currentLine = [pt];
+                freeDrawLines.push(currentLine);
+            } 
+            else if (canvasMode === 'erase') {
+                handlePreciseEraserAction(pt);
+            }
+            else if (canvasMode === 'select') {
+                if (selectedLabel) {
+                    let handles = getResizeHandles(selectedLabel);
+                    for (let hKey in handles) {
+                        let h = handles[hKey];
+                        if (pt.x >= h.x && pt.x <= h.x + h.size && pt.y >= h.y && pt.y <= h.y + h.size) {
+                            isResizingLabel = true;
+                            activeHandle = hKey;
+                            return;
+                        }
+                    }
+                }
+
+                for (let i = sizeLabels.length - 1; i >= 0; i--) {
+                    let el = sizeLabels[i];
+                    if (pt.x >= el.x && pt.x <= el.x + el.w && pt.y >= el.y && pt.y <= el.y + el.h) {
+                        selectedLabel = el;
+                        isDraggingLabel = true;
+                        dragOffset.x = pt.x - el.x;
+                        dragOffset.y = pt.y - el.y;
+                        redrawCanvas();
+                        return;
+                    }
+                }
+                selectedLabel = null;
+                redrawCanvas();
             }
         }
 
         function moveInteract(e) {
             const pt = getCanvasCoords(e);
-            if (canvasMode === 'draw' && currentLine) { currentLine.push(pt); redrawCanvas(); } 
-            else if (canvasMode === 'erase' && (e.buttons === 1 || e.type === 'touchmove')) { handleEraserAction(pt); }
-            else if (canvasMode === 'select' && selectedLabel && isDraggingLabel) {
-                selectedLabel.x = pt.x - dragOffset.x; selectedLabel.y = pt.y - dragOffset.y; redrawCanvas();
+
+            if (canvasMode === 'draw' && currentLine) {
+                currentLine.push(pt);
+                redrawCanvas();
+            } 
+            else if (canvasMode === 'erase') {
+                if (e.buttons === 1 || (e.type === 'touchmove')) { 
+                    handlePreciseEraserAction(pt);
+                }
+            }
+            else if (canvasMode === 'select' && selectedLabel) {
+                if (isDraggingLabel) {
+                    selectedLabel.x = pt.x - dragOffset.x;
+                    selectedLabel.y = pt.y - dragOffset.y;
+                    redrawCanvas();
+                } else if (isResizingLabel) {
+                    if (activeHandle === 'right') {
+                        let newW = pt.x - selectedLabel.x;
+                        if(newW > 25) selectedLabel.w = newW;
+                    } else if (activeHandle === 'bottom') {
+                        let newH = pt.y - selectedLabel.y;
+                        if(newH > 14) selectedLabel.h = newH;
+                    } else if (activeHandle === 'corner') {
+                        let newW = pt.x - selectedLabel.x;
+                        let newH = pt.y - selectedLabel.y;
+                        if(newW > 25) selectedLabel.w = newW;
+                        if(newH > 14) selectedLabel.h = newH;
+                    }
+                    redrawCanvas();
+                }
             }
         }
 
-        function endInteract() { currentLine = null; isDraggingLabel = false; }
+        function endInteract() {
+            currentLine = null;
+            isDraggingLabel = false;
+            isResizingLabel = false;
+            activeHandle = null;
+        }
 
-        function handleEraserAction(pt) {
-            let radius = 15; let newLines = [];
-            freeDrawLines.forEach(line => {
-                let sub = [];
-                line.forEach(p => {
-                    let d = Math.sqrt(Math.pow(p.x - pt.x, 2) + Math.pow(p.y - pt.y, 2));
-                    if (d > radius) sub.push(p);
-                    else { if (sub.length > 0) { newLines.push(sub); sub = []; } }
-                });
-                if (sub.length > 0) newLines.push(sub);
-            });
-            freeDrawLines = newLines; redrawCanvas();
+        function getResizeHandles(el) {
+            let s = 10;
+            return {
+                right: { x: el.x + el.w - s/2, y: el.y + el.h/2 - s/2, size: s },
+                bottom: { x: el.x + el.w/2 - s/2, y: el.y + el.h - s/2, size: s },
+                corner: { x: el.x + el.w - s/2, y: el.y + el.h - s/2, size: s }
+            };
         }
 
         function redrawCanvas() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // رسم الشبكة
             ctx.strokeStyle = '#f3f3f3'; ctx.lineWidth = 1;
             for(let i=0; i<canvas.width; i+=20) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, canvas.height); ctx.stroke(); }
             for(let j=0; j<canvas.height; j+=20) { ctx.beginPath(); ctx.moveTo(0, j); ctx.lineTo(canvas.width, j); ctx.stroke(); }
 
-            ctx.strokeStyle = '#000'; ctx.lineWidth = 4; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+            // رسم الخطوط اليدوية
+            ctx.strokeStyle = '#0D0D0D';
+            ctx.lineWidth = 4;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
             freeDrawLines.forEach(line => {
                 if(line.length < 1) return;
-                ctx.beginPath(); ctx.moveTo(line[0].x, line[0].y);
-                for(let k=1; k<line.length; k++) ctx.lineTo(line[k].x, line[k].y);
+                ctx.beginPath();
+                ctx.moveTo(line[0].x, line[0].y);
+                for(let k=1; k<line.length; k++) {
+                    ctx.lineTo(line[k].x, line[k].y);
+                }
                 ctx.stroke();
             });
 
+            // رسم صناديق المقاسات والنص بوضوح
             sizeLabels.forEach((el) => {
-                ctx.fillStyle = '#fff'; ctx.fillRect(el.x, el.y, el.w, el.h);
-                ctx.strokeStyle = 'var(--green)'; ctx.lineWidth = 2; ctx.strokeRect(el.x, el.y, el.w, el.h);
-                ctx.fillStyle = '#27ae60'; ctx.font = 'bold 12px Tajawal'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-                ctx.fillText(el.text, el.x + el.w/2, el.y + el.h/2 + 1);
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(el.x, el.y, el.w, el.h);
+                
+                ctx.strokeStyle = '#27ae60';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(el.x, el.y, el.w, el.h);
+                
+                ctx.fillStyle = '#27ae60';
+                ctx.font = 'bold 14px Tajawal';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(el.text, el.x + el.w/2, el.y + el.h/2);
+
+                // مقابض التحجيم للمربع المحدد في وضع التحريك
+                if (canvasMode === 'select' && selectedLabel && selectedLabel.id === el.id) {
+                    ctx.strokeStyle = '#000'; ctx.lineWidth = 1; ctx.setLineDash([2, 2]);
+                    ctx.strokeRect(el.x - 2, el.y - 2, el.w + 4, el.h + 4); ctx.setLineDash([]);
+                    
+                    let handles = getResizeHandles(el);
+                    ctx.fillStyle = '#0D0D0D';
+                    for (let hKey in handles) {
+                        ctx.fillRect(handles[hKey].x, handles[hKey].y, handles[hKey].size, handles[hKey].size);
+                    }
+                }
             });
+            ctx.textBaseline = 'alphabetic';
+        }
+
+        // توليد صورة المخطط للفاتورة — تحسب حدود الرسم كاملاً لضمان عدم قصّ أي جزء
+        function generateStaticCanvasImage(lines, labels, baseW, baseH) {
+            lines = lines || [];
+            labels = labels || [];
+
+            // حساب أقصى امتداد للمحتوى (خطوط + مربعات مقاسات)
+            const PAD = 25;
+            let maxX = 0, maxY = 0;
+            lines.forEach(line => line.forEach(p => {
+                if(p.x > maxX) maxX = p.x;
+                if(p.y > maxY) maxY = p.y;
+            }));
+            labels.forEach(el => {
+                if(el.x + el.w > maxX) maxX = el.x + el.w;
+                if(el.y + el.h > maxY) maxY = el.y + el.h;
+            });
+
+            // مساحة الصورة = الأكبر بين مقاس اللوحة المحفوظ وامتداد المحتوى + هامش أمان
+            const drawW = Math.max(baseW || 0, maxX + PAD, 300);
+            const drawH = Math.max(baseH || 0, maxY + PAD, 200);
+
+            const SCALE = 2.5;
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = drawW * SCALE;
+            tempCanvas.height = drawH * SCALE;
+            const tCtx = tempCanvas.getContext('2d');
+            
+            tCtx.fillStyle = '#ffffff';
+            tCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+            
+            tCtx.strokeStyle = '#eaeaea'; tCtx.lineWidth = 1;
+            for(let i=0; i<tempCanvas.width; i+=50) { tCtx.beginPath(); tCtx.moveTo(i, 0); tCtx.lineTo(i, tempCanvas.height); tCtx.stroke(); }
+            for(let j=0; j<tempCanvas.height; j+=50) { tCtx.beginPath(); tCtx.moveTo(0, j); tCtx.lineTo(tempCanvas.width, j); tCtx.stroke(); }
+
+            tCtx.strokeStyle = '#000000'; tCtx.lineWidth = 6; tCtx.lineCap = 'round'; tCtx.lineJoin = 'round';
+            lines.forEach(line => {
+                if(line.length < 1) return;
+                tCtx.beginPath(); tCtx.moveTo(line[0].x * SCALE, line[0].y * SCALE);
+                for(let k=1; k<line.length; k++) { tCtx.lineTo(line[k].x * SCALE, line[k].y * SCALE); }
+                tCtx.stroke();
+            });
+
+            labels.forEach((el) => {
+                tCtx.fillStyle = '#ffffff'; tCtx.fillRect(el.x * SCALE, el.y * SCALE, el.w * SCALE, el.h * SCALE);
+                tCtx.strokeStyle = '#27ae60'; tCtx.lineWidth = 4; tCtx.strokeRect(el.x * SCALE, el.y * SCALE, el.w * SCALE, el.h * SCALE);
+                tCtx.fillStyle = '#27ae60'; tCtx.font = 'bold 22px Tajawal'; tCtx.textAlign = 'center'; tCtx.textBaseline = 'middle';
+                tCtx.fillText(el.text, (el.x + el.w/2) * SCALE, (el.y + el.h/2) * SCALE);
+            });
+            
+            return tempCanvas.toDataURL('image/png');
         }
 
         function saveSpaceToProject() {
             const type = document.getElementById('space-type').value;
             const customName = document.getElementById('space-custom-name').value.trim();
+            
             let spacePayload = { 
-                type: type, customName: customName, products: {}, 
+                type: type, 
+                customName: customName, 
+                products: {}, 
                 savedFreeDrawLines: JSON.parse(JSON.stringify(freeDrawLines)),
-                savedSizeLabels: JSON.parse(JSON.stringify(sizeLabels)), totalPrice: 0 
+                savedSizeLabels: JSON.parse(JSON.stringify(sizeLabels)), 
+                savedCanvasW: canvas.width,
+                savedCanvasH: canvas.height,
+                totalPrice: 0 
             };
-            let sum = 0;
+            let spaceSum = 0;
 
             if(selectedProducts.carpet) {
-                let p = parseFloat(document.getElementById('c-price').value) || 0; sum += p;
+                let p = parseFloat(document.getElementById('c-price').value) || 0; spaceSum += p;
                 spacePayload.products.carpet = { length: document.getElementById('c-length').value, width: document.getElementById('c-width').value, pattern: document.getElementById('c-pattern').value, color: document.getElementById('c-color').value, price: p };
             }
             if(selectedProducts.musnad) {
-                let p = parseFloat(document.getElementById('m-price').value) || 0; sum += p;
+                let p = parseFloat(document.getElementById('m-price').value) || 0; spaceSum += p;
                 spacePayload.products.musnad = { pattern: document.getElementById('m-pattern').value, color: document.getElementById('m-color').value, price: p };
             }
             if(selectedProducts.curtain) {
-                let items = [];
+                let curtainsItems = [];
                 document.querySelectorAll('#curtains-wrapper .curtain-item').forEach(el => {
-                    let cp = parseFloat(el.querySelector('.curt-p').value) || 0; sum += cp;
-                    items.push({ type: el.querySelector('.curt-type').value, width: el.querySelector('.curt-w').value, height: el.querySelector('.curt-h').value, price: cp });
+                    let cp = parseFloat(el.querySelector('.curt-p').value) || 0; spaceSum += cp;
+                    curtainsItems.push({ type: el.querySelector('.curt-type').value, width: el.querySelector('.curt-w').value, height: el.querySelector('.curt-h').value, price: cp });
                 });
-                spacePayload.products.curtain = items;
+                spacePayload.products.curtain = curtainsItems;
             }
             if(selectedProducts.sofa) {
-                let p = parseFloat(document.getElementById('s-price').value) || 0; sum += p;
+                let p = parseFloat(document.getElementById('s-price').value) || 0; spaceSum += p;
                 spacePayload.products.sofa = { desc: document.getElementById('s-desc').value, price: p };
             }
 
-            spacePayload.totalPrice = sum;
+            spacePayload.totalPrice = spaceSum;
             const proj = projects.find(p => p.id === currentProjectId);
-            proj.spaces.push(spacePayload); saveToStorage(); openProject(currentProjectId);
+            proj.spaces.push(spacePayload);
+            saveToStorage();
+            openProject(currentProjectId);
         }
 
         function closeSpaceScreen() { navigate('screen-project-details'); }
 
-        // توليد صورة ثابتة للمخطط متوافقة مع عرض الهاتف
-        function generateStaticCanvasImage(lines, labels) {
-            const temp = document.createElement('canvas'); 
-            temp.width = 400; temp.height = 250; // أبعاد أصغر ومناسبة للهواتف تماماً
-            const tCtx = temp.getContext('2d');
-            tCtx.fillStyle = '#ffffff'; tCtx.fillRect(0, 0, temp.width, temp.height);
-            
-            tCtx.strokeStyle = '#eaeaea'; tCtx.lineWidth = 1;
-            for(let i=0; i<temp.width; i+=25) { tCtx.beginPath(); tCtx.moveTo(i, 0); tCtx.lineTo(i, temp.height); tCtx.stroke(); }
-            for(let j=0; j<temp.height; j+=25) { tCtx.beginPath(); tCtx.moveTo(0, j); tCtx.lineTo(temp.width, j); tCtx.stroke(); }
-
-            tCtx.strokeStyle = '#000000'; tCtx.lineWidth = 4; tCtx.lineCap = 'round'; tCtx.lineJoin = 'round';
-            let sx = canvas && canvas.width ? (400 / canvas.width) : 1.2;
-            let sy = canvas && canvas.height ? (250 / canvas.height) : 1.2;
-
-            lines.forEach(line => {
-                if(line.length < 1) return;
-                tCtx.beginPath(); tCtx.moveTo(line[0].x * sx, line[0].y * sy);
-                for(let k=1; k<line.length; k++) tCtx.lineTo(line[k].x * sx, line[k].y * sy);
-                tCtx.stroke();
-            });
-
-            labels.forEach(el => {
-                let rx = el.x * sx; let ry = el.y * sy; let rw = el.w * sx; let rh = el.h * sy;
-                tCtx.fillStyle = '#ffffff'; tCtx.fillRect(rx, ry, rw, rh);
-                tCtx.strokeStyle = '#27ae60'; tCtx.lineWidth = 2; tCtx.strokeRect(rx, ry, rw, rh);
-                tCtx.fillStyle = '#27ae60'; tCtx.font = 'bold 12px Tajawal'; tCtx.textAlign = 'center'; tCtx.textBaseline = 'middle';
-                tCtx.fillText(el.text, rx + rw/2, ry + rh/2 + 1);
-            });
-            return temp.toDataURL('image/png');
-        }
-
-        // بناء وعرض الفاتورة متجاوبة 100% مع شاشة الهاتف للتصوير السريع
-        function prepareAndGoToExport(target) {
-            currentExportTarget = target;
+        function exportPDF(target) {
             const proj = projects.find(p => p.id === currentProjectId);
+            const branch = getProjectBranch(proj);
             let totalSum = 0; proj.spaces.forEach(s => totalSum += Number(s.totalPrice || 0));
-            
-            const renderZone = document.getElementById('invoice-render-zone');
-            renderZone.innerHTML = ''; 
 
             if(target === 'customer') {
-                let html = `
-                    <div class="invoice-print-container" id="actual-invoice-node">
-                        <div class="invoice-header">
-                            <h2 style="font-size: 18px; margin-bottom: 3px; color:#000;">سالفورد للأثاث والمفروشات</h2>
-                            <p style="font-size: 12px; color: #555;">الضجيج | مجمع علي عبدالوهاب</p>
-                            <br>
-                            <table style="width:100%; border:none; text-align:right; font-size:12px; line-height:1.6; color:#000;">
-                                <tr><td><strong>رقم الفاتورة:</strong> ${proj.id}</td></tr>
-                                <tr><td><strong>التاريخ:</strong> ${proj.date}</td></tr>
-                                <tr><td><strong>السيد / السيدة:</strong> ${proj.name}</td></tr>
-                                <tr><td><strong>موعد التسليم:</strong> ${proj.delivery || 'قيد التنفيذ'}</td></tr>
-                            </table>
-                        </div>
-                        <table class="invoice-table">
-                            <thead>
-                                <tr>
-                                    <th>المساحة</th>
-                                    <th>المنتج والوصف</th>
-                                    <th>السعر</th>
-                                </tr>
-                            </thead>
-                            <tbody>`;
-                
+                document.getElementById('inv-cust-id').innerText = proj.id;
+                document.getElementById('inv-cust-date').innerText = proj.date;
+                document.getElementById('inv-cust-name').innerText = proj.name;
+                document.getElementById('inv-cust-branch-line').innerText = `${branch.address || 'فرع ' + branch.name} | 📞 ${branch.phone}`;
+                document.getElementById('inv-cust-footer-phone').innerText = `للاستفسار والمتابعة: فرع ${branch.name} — ${branch.phone}`;
+                const tbody = document.querySelector('#inv-cust-table tbody'); tbody.innerHTML = '';
                 proj.spaces.forEach(s => {
-                    let desc = [];
-                    if(s.products.carpet) desc.push(`سجاد (${s.products.carpet.length}×${s.products.carpet.width}م)`);
-                    if(s.products.musnad) desc.push(`تفصيل مساند ديوانية`);
-                    if(s.products.curtain) desc.push(`ستائر (${s.products.curtain.length} نافذة)`);
-                    if(s.products.sofa) desc.push(`طقم كنب مخصص`);
-                    
-                    html += `<tr>
-                                <td><b>${s.type}</b><br><span style="font-size:10px; color:#666;">${s.customName || ''}</span></td>
-                                <td>${desc.join(' + ')}</td>
-                                <td>${s.totalPrice} د.ك</td>
-                             </tr>`;
+                    let descParts = [];
+                    if(s.products.carpet) descParts.push(`سجاد ومفروشات`);
+                    if(s.products.musnad) descParts.push(`تفصيل طقم مساند ديوانية`);
+                    if(s.products.curtain) descParts.push(`تفصيل ستائر مخصصة (${s.products.curtain.length} نافذة)`);
+                    if(s.products.sofa) descParts.push(`طقم كنب مخصص`);
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td><strong>${s.type}</strong><br><span style="font-size:11px; color:#555;">${s.customName || ''}</span></td><td>${descParts.join(' + ')}</td><td>${s.totalPrice} د.ك</td>`;
+                    tbody.appendChild(tr);
                 });
+                document.getElementById('inv-cust-total').innerText = totalSum;
+                document.getElementById('inv-cust-notes-area').innerHTML = proj.notes ? `<strong>شروط وملاحظات الفاتورة:</strong><br>${proj.notes.replace(/\n/g, '<br>')}` : '';
+                triggerPDFGeneration('invoice-customer', `فاتورة_زبون_${proj.name}`);
+            } else {
+                document.getElementById('inv-int-name').innerText = proj.name;
+                document.getElementById('inv-int-phone').innerText = proj.phone || '-';
+                document.getElementById('inv-int-address').innerText = proj.address || '-';
+                document.getElementById('inv-int-date').innerText = proj.date;
+                document.getElementById('inv-int-branch').innerText = branch.name;
+                document.getElementById('inv-int-branch-phone').innerText = branch.phone;
+                document.getElementById('inv-int-delivery').innerText = proj.delivery || 'غير محدد';
+                document.getElementById('inv-int-total').innerText = totalSum;
+                document.getElementById('inv-int-notes-area').innerHTML = proj.notes ? `<strong>ملاحظات الإدارة:</strong><br>${proj.notes.replace(/\n/g, '<br>')}` : '';
 
-                html += `</tbody></table>
-                        <h3 style="text-align: left; margin-bottom: 15px; font-size: 15px; color:#000;">الإجمالي الكلي: ${totalSum} د.ك</h3>
-                        ${proj.notes ? `<div class="internal-notes-block" style="background:none; border:none; border-top:1px dashed #000;"><b>ملاحظات:</b><br>${proj.notes.replace(/\n/g, '<br>')}</div>` : ''}
-                    </div>`;
-                renderZone.innerHTML = html;
-            } 
-            else {
-                // نسخة الورشة الفنية التفصيلية المضبوطة للهاتف لتصويرها بالكامل دون نقصان
-                let html = `
-                    <div class="invoice-print-container" id="actual-invoice-node">
-                        <div class="invoice-header" style="border-bottom-color: #000;">
-                            <h2 style="font-size: 16px; color: #000;">نسخة الإدارة الفنية والورشة (تفصيلية)</h2>
-                        </div>
-                        <div style="font-size: 12px; margin-bottom: 12px; line-height: 1.5; border-bottom: 1px solid #000; padding-bottom:8px; color:#000;">
-                            <p><strong>الزبون:</strong> ${proj.name}</p>
-                            <p><strong>الهاتف:</strong> ${proj.phone || '-'}</p>
-                            <p><strong>العنوان:</strong> ${proj.address || '-'}</p>
-                            <p><strong>التاريخ:</strong> ${proj.date}</p>
-                            <p style="color: #d9534f; font-weight: bold;"><strong>التسليم:</strong> ${proj.delivery || 'عاجل'}</p>
-                        </div>`;
+                const topCanvasArea = document.getElementById('inv-int-top-canvas-area');
+                const spacesDetailsContainer = document.getElementById('inv-int-spaces-details');
+                topCanvasArea.innerHTML = '';
+                spacesDetailsContainer.innerHTML = '';
 
-                proj.spaces.forEach(s => {
-                    let sLines = s.savedFreeDrawLines || [];
-                    let sLabels = s.savedSizeLabels || [];
-                    
-                    if(sLines.length > 0 || sLabels.length > 0) {
-                        const imgData = generateStaticCanvasImage(sLines, sLabels);
-                        html += `
-                            <div class="internal-canvas-preview-box">
-                                <p style="text-align:right; font-weight:bold; font-size:12px; margin-bottom:3px; color:#000;">📐 المخطط الهندسي: ${s.type} (${s.customName || 'عامة'})</p>
-                                <img src="${imgData}" />
-                            </div>`;
+                proj.spaces.forEach((s) => {
+                    if((s.savedFreeDrawLines && s.savedFreeDrawLines.length > 0) || (s.savedSizeLabels && s.savedSizeLabels.length > 0)) {
+                        const imgData = generateStaticCanvasImage(s.savedFreeDrawLines, s.savedSizeLabels, s.savedCanvasW, s.savedCanvasH);
+                        
+                        const previewBlock = document.createElement('div');
+                        previewBlock.className = 'internal-canvas-preview-box';
+                        previewBlock.innerHTML = `
+                            <p style="text-align:right; font-weight:bold; font-size:14px; margin-bottom:5px; color:#000;">📐 المخطط الفني للمساحة: ${s.type} (${s.customName || 'عامة'})</p>
+                            <img src="${imgData}" style="width:100%; height:auto; max-height:230mm; object-fit:contain;" />
+                        `;
+                        topCanvasArea.appendChild(previewBlock);
                     }
                     
-                    html += `
-                        <div class="workshop-space-block">
-                            <h4 style="font-size:12px; color:#000; background:#eaeaea; padding:4px; font-weight:bold;">🛠️ مساحة: ${s.type} [${s.customName || 'عامة'}]</h4>
-                            <table class="workshop-spec-table">
-                                <thead>
-                                    <tr>
-                                        <th style="width:25%">المنتج</th>
-                                        <th style="width:50%">المواصفات الفنية للعمال</th>
-                                        <th style="width:25%">الابعاد</th>
-                                    </tr>
-                                </thead>
-                                <tbody>`;
-
-                    if(s.products.carpet) {
-                        html += `<tr>
-                                    <td><b>سجاد</b></td>
-                                    <td>مسطرة: ${s.products.carpet.pattern || '-'}<br>اللون: ${s.products.carpet.color || '-'}</td>
-                                    <td>${s.products.carpet.length}×${s.products.carpet.width}م</td>
-                                 </tr>`;
-                    }
-                    if(s.products.musnad) {
-                        html += `<tr>
-                                    <td><b>مساند</b></td>
-                                    <td>مسطرة الخام: ${s.products.musnad.pattern || '-'}<br>رقم اللون: ${s.products.musnad.color || '-'}</td>
-                                    <td>انظر اللوحة 📐</td>
-                                 </tr>`;
-                    }
-                    if(s.products.sofa) {
-                        html += `<tr>
-                                    <td><b>كنب</b></td>
-                                    <td>المواصفات: ${s.products.sofa.desc || '-'}</td>
-                                    <td>قياس الموقع</td>
-                                 </tr>`;
-                    }
-                    if(s.products.curtain && Array.isArray(s.products.curtain)) {
-                        let details = '';
+                    const spaceBlock = document.createElement('div');
+                    spaceBlock.style.border = '1px solid #ccc'; spaceBlock.style.padding = '10px'; spaceBlock.style.marginBottom = '10px'; spaceBlock.style.borderRadius = '5px';
+                    let html = `<h4 style="font-size:13px; color:#000;">📋 مواصفات: ${s.type} [${s.customName || 'عامة'}] - السعر: ${s.totalPrice} د.ك</h4>`;
+                    html += `<div style="font-size:12px; margin-top: 5px; color:#444; line-height:1.5;">`;
+                    if(s.products.carpet) html += `<p>🔹 <strong>السجاد:</strong> ${s.products.carpet.length}×${s.products.carpet.width}م | المسطرة: ${s.products.carpet.pattern} | اللون: ${s.products.carpet.color} | السعر: ${s.products.carpet.price} د.ك</p>`;
+                    if(s.products.musnad) html += `<p>🔹 <strong>المساند:</strong> الخام: ${s.products.musnad.pattern} | اللون: ${s.products.musnad.color} | السعر: ${s.products.musnad.price} د.ك</p>`;
+                    if(s.products.sofa) html += `<p>🔹 <strong>الكنب:</strong> ${s.products.sofa.desc} | السعر: ${s.products.sofa.price} د.ك</p>`;
+                    if(s.products.curtain) {
+                        html += `<p>🔹 <strong>الستائر:</strong></p>`;
                         s.products.curtain.forEach((curt, i) => {
-                            details += `• ستارة ${i+1}: ${curt.type || 'خام'} (${curt.width}م × ${curt.height}م)<br>`;
+                            html += `<p style="padding-right:15px;">- ستارة ${i+1}: نوع ${curt.type} | عرض ${curt.width}م × ارتفاع ${curt.height}م | السعر: ${curt.price} د.ك</p>`;
                         });
-                        html += `<tr>
-                                    <td><b>ستائر (${s.products.curtain.length})</b></td>
-                                    <td>${details}</td>
-                                    <td>أبعاد تفصيلية</td>
-                                 </tr>`;
                     }
-                    
-                    html += `</tbody></table></div>`;
+                    html += `</div>`; spaceBlock.innerHTML = html; spacesDetailsContainer.appendChild(spaceBlock);
                 });
+                
+                triggerPDFGeneration('invoice-internal', `نسخة_الورشة_${proj.name}`);
+            }
+        }
 
-                html += `
-                    <h3 style="text-align: left; margin-top: 15px; border-top: 1px solid #000; padding-top: 8px; font-size: 15px; color: #000;">الإجمالي: ${totalSum} د.ك</h3>
-                    ${proj.notes ? `<div class="internal-notes-block"><b>ملاحظات الورشة:</b><br>${proj.notes.replace(/\n/g, '<br>')}</div>` : ''}
-                    </div>`;
-                renderZone.innerHTML = html;
+        // توليد PDF محسّن: يعمل على المتصفح والهاتف وداخل تطبيقات WebView (APK)
+        function triggerPDFGeneration(elementId, fileName) {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            
+            const opt = { 
+                margin: 8, 
+                filename: `${fileName}.pdf`, 
+                image: { type: 'jpeg', quality: 0.98 }, 
+                html2canvas: { scale: 2, useCORS: true, logging: false, scrollY: 0 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'], avoid: ['.internal-canvas-preview-box', 'tr'] }
+            };
+            
+            if (typeof html2pdf === 'undefined') { 
+                fallbackPrint(element); 
+                return; 
             }
 
-            navigate('screen-export-preview');
+            html2pdf().set(opt).from(element).outputPdf('blob').then((pdfBlob) => {
+                element.style.display = 'none';
+                const blobUrl = URL.createObjectURL(pdfBlob);
+                
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = `${fileName}.pdf`;
+                a.rel = 'noopener';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                
+                setTimeout(() => { URL.revokeObjectURL(blobUrl); }, 10000);
+            }).catch(() => {
+                element.style.display = 'none';
+                fallbackPrint(element);
+            });
         }
 
-        function executePDFDownload() {
-            // بقاء الكود لعدم حدوث أخطاء برمجية أثناء التشغيل
+        function fallbackPrint(element) {
+            const printWindow = window.open('', '_blank');
+            if (!printWindow) {
+                alert('يرجى السماح بالنوافذ المنبثقة لإتمام الطباعة، أو استخدام خيار "طباعة" ثم "حفظ كـ PDF" من قائمة المتصفح.');
+                element.style.display = 'none';
+                return;
+            }
+            printWindow.document.write('<html dir="rtl" lang="ar"><head><title>طباعة الفاتورة</title>');
+            printWindow.document.write('<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">');
+            printWindow.document.write('<style>' + document.getElementsByTagName('style')[0].innerHTML + '</style>');
+            printWindow.document.write('</head><body style="background:white; color:black; padding:20px;">');
+            printWindow.document.write(document.getElementById('salford-logo-shape') ? document.querySelector('svg[width="0"]').outerHTML : '');
+            printWindow.document.write(element.innerHTML);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            element.style.display = 'none';
+            setTimeout(() => { printWindow.print(); }, 700);
         }
-
-        function closeExportPreviewScreen() { navigate('screen-project-details'); }
 
         function shareWhatsApp(target) {
             const proj = projects.find(p => p.id === currentProjectId);
-            let total = 0; proj.spaces.forEach(s => total += Number(s.totalPrice || 0));
-            let msg = `*سالفورد للأثاث والمفروشات*\n*ملخص طلبية الزبون*\n\n*الزبون:* ${proj.name}\n---------------------------\n`;
+            const branch = getProjectBranch(proj);
+            let totalSum = 0; proj.spaces.forEach(s => totalSum += Number(s.totalPrice || 0));
+            let msg = `*سالفورد للأثاث والمفروشات*\n*فرع ${branch.name}* 📞 ${branch.phone}\n*ملخص طلبية الزبون*\n\n*الزبون:* ${proj.name}\n*الرقم:* ${proj.id}\n---------------------------\n`;
             proj.spaces.forEach((s, idx) => {
                 msg += `*${idx+1}) مساحة ${s.type}* [${s.customName || ''}]\n`;
-                if(s.products.carpet) msg += ` - سجاد ومسطرة بلون رقم: ${s.products.carpet.color}\n`;
-                if(s.products.musnad) msg += ` - تفصيل مساند مسطرة: ${s.products.musnad.pattern}\n`;
-                msg += ` *السعر:* ${s.totalPrice} د.ك\n\n`;
+                if(s.products.carpet) msg += ` - سجاد: ${s.products.carpet.length}×${s.products.carpet.width}م\n`;
+                if(s.products.musnad) msg += ` - طقم مساند كامل\n`;
+                if(s.products.curtain) msg += ` - ستائر عدد: ${s.products.curtain.length}\n`;
+                if(s.products.sofa) msg += ` - كنب: ${s.products.sofa.desc}\n`;
+                msg += ` *السعر الفرعي:* ${s.totalPrice} د.ك\n\n`;
             });
-            msg += `---------------------------\n*الإجمالي النهائي:* ${total} د.ك\n`;
+            msg += `---------------------------\n*الإجمالي النهائي:* ${totalSum} د.ك\n`;
             let phone = (target === 'customer') ? (proj.phone || '') : '96555943343';
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
 </body>
 </html>
-
